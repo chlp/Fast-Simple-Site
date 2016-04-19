@@ -4,9 +4,28 @@ namespace pages;
 class Page
 {
     /**
-     * @var array
+     * @var Page[]
      */
     static public $pages = [];
+
+    /**
+     * @var string[]
+     */
+    static public $allImages = [];
+
+    /**
+     * Невидимый div со всеми изображениями
+     * @return string
+     */
+    static public function cachingImagesHtml()
+    {
+        $html = '<div style="display: none;">';
+        foreach (Page::$allImages as $img) {
+            $html .= '<img src="' . $img . '" width="1" height="1" alt="caching image">';
+        }
+        $html .= '</div>';
+        return $html;
+    }
 
     /**
      * @var string
@@ -19,18 +38,18 @@ class Page
     public $html = '';
 
     /**
-     * @var array
+     * @var string[]
      */
     public $images = [];
 
     /**
-     * @var array
+     * @var string[]
      */
     public $links = [];
 
     /**
      * Page constructor.
-     * @param $name
+     * @param $name string
      * @throws \Exception если имя под страницу уже занято
      */
     function __construct($name)
@@ -50,6 +69,9 @@ class Page
     {
         if (!in_array($src, $this->images)) {
             $this->images[] = $src;
+        }
+        if (!in_array($src, Page::$allImages)) {
+            Page::$allImages[] = $src;
         }
         return $src;
     }
