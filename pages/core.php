@@ -19,6 +19,7 @@ class Page
      */
     static public function cachingImagesHtml()
     {
+        // todo: это нужно делать уже после подгрузке всех изображений с текущей страницы
         $html = '<div style="display: none;">';
         foreach (Page::$allImages as $img) {
             $html .= '<img src="' . $img . '" width="1" height="1" alt="caching image">';
@@ -67,6 +68,7 @@ class Page
      */
     public function img($src)
     {
+        // todo: тяжелые изображения нужно автоматически уменьшать, а загружать большие только по готовности
         if (!in_array($src, $this->images)) {
             $this->images[] = $src;
         }
