@@ -1,6 +1,16 @@
 <?php
 namespace pages;
 
+foreach (scandir(__DIR__) as $page) {
+    if (in_array($page, ['.', '..'])) {
+        continue;
+    }
+    if (!is_dir(__DIR__ . '/' . $page)) {
+        continue;
+    }
+    require __DIR__ . '/' . $page . '/page.php';
+}
+
 class Page
 {
     /**

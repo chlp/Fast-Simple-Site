@@ -34,6 +34,5 @@
         }
 
         // todo: make json object with all pages (php use to write static) by names
-        // todo: make list of all images
     </script>
 </head>
