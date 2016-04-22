@@ -32,7 +32,7 @@ class Page
                 'body' => $page->html
             ];
         }
-        return json_encode($pagesObj);
+        return json_encode($pagesObj, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 
     /**

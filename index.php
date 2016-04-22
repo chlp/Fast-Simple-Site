@@ -1,9 +1,13 @@
 <?
 // todo:
-// * сохранить данные в localstorage
 // * добавить перевод
 
 require __DIR__ . '/pages/core.php';
+
+if (isset($_GET['allPagesJavaScriptObject'])) {
+    echo \pages\Page::allPagesHtmlJavaScriptObject();
+    exit;
+}
 
 $pageName = 'index';
 if (isset($_GET['page'])) {
