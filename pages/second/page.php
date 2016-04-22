@@ -1,7 +1,7 @@
 <?php
 namespace pages;
 require_once __DIR__ . '/../core.php';
-$page_second = new Page('second');
+$page_second = new Page('second', 'Вторая страничка');
 ob_start();
 ?>
     Second

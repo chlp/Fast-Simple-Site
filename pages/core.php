@@ -28,7 +28,7 @@ class Page
         $pagesObj = [];
         foreach (Page::$pages as $name => $page) {
             $pagesObj[$name] = [
-                'title' => $name, // todo: tile нужен специальный указывать, а не name брать
+                'title' => $page->title,
                 'body' => $page->html
             ];
         }
@@ -63,6 +63,11 @@ class Page
     /**
      * @var string
      */
+    public $title;
+
+    /**
+     * @var string
+     */
     public $html = '';
 
     /**
@@ -80,12 +85,13 @@ class Page
      * @param $name string
      * @throws \Exception если имя под страницу уже занято
      */
-    function __construct($name)
+    function __construct($name, $title)
     {
         if (key_exists($name, Page::$pages)) {
             throw new \Exception('Page already exist with name' . $name);
         }
         $this->name = $name;
+        $this->title = $title;
         Page::$pages[$name] = $this;
     }
 

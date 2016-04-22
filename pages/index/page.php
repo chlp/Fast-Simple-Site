@@ -1,7 +1,7 @@
 <?php
 namespace pages;
 require_once __DIR__ . '/../core.php';
-$page_index = new Page('index');
+$page_index = new Page('index', 'Быстрые страницы');
 ob_start();
 ?>
     Index

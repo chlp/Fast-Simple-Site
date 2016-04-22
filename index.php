@@ -4,7 +4,6 @@
 // * добавить перевод
 
 require __DIR__ . '/pages/core.php';
-require('header.php');
 
 $pageName = 'index';
 if (isset($_GET['page'])) {
@@ -14,6 +13,8 @@ if (isset($_GET['page'])) {
     }
 }
 $page = \pages\Page::$pages[$pageName];
+
+require('header.php');
 ?>
 <body>
 <?= $page->html ?>

@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title><?= $page->title ?></title>
     <script src="jquery-2.2.2.min.js"></script>
     <script>
         window.addEventListener('popstate', function (event) {
@@ -13,7 +13,7 @@
             var pages = <?= \pages\Page::allPagesHtmlJavaScriptObject() ?>;
 
             if (!fromHistory) {
-                window.history.pushState(pageName, pageName, pageName + '.php');
+                window.history.pushState(pageName, pages[pageName].title, '?page=' + pageName);
             }
 
             $('body').html(pages[pageName].body);
