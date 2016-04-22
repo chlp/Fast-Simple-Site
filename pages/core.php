@@ -106,14 +106,14 @@ class Page
     }
 
     /**
-     * @param $page string
+     * @param $pageName string
      * @return string
      */
-    public function link($page)
+    public function link($pageName)
     {
-        if (!in_array($page, $this->links)) {
-            $this->links[] = $page;
+        if (!in_array($pageName, $this->links)) {
+            $this->links[] = $pageName;
         }
-        return $page;
+        return 'href="?page=' . $pageName . '" onclick="openPage(\'' . $pageName . '\'); return false;"';
     }
 }

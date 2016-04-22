@@ -6,10 +6,10 @@
     <script src="jquery-2.2.2.min.js"></script>
     <script>
         window.addEventListener('popstate', function (event) {
-            openPage(event.state, true);
+            _openPage(event.state, true);
         });
 
-        function openPage(pageName, fromHistory) {
+        function _openPage(pageName, fromHistory) {
             var pages = <?= \pages\Page::allPagesHtmlJavaScriptObject() ?>;
 
             if (!fromHistory) {
@@ -19,6 +19,10 @@
             $('body').html(pages[pageName].body);
 
             document.title = pages[pageName].title;
+        }
+
+        function openPage(pageName) {
+            return _openPage(pageName, false);
         }
     </script>
 </head>
