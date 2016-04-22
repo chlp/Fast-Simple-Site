@@ -17,9 +17,10 @@ if (isset($_GET['page'])) {
     }
 }
 $page = \pages\Page::$pages[$pageName];
-
-require('header.php');
 ?>
+<!DOCTYPE html>
+<html lang="ru">
+<? require('header.php'); ?>
 <body>
 <?= $page->html ?>
 <?= \pages\Page::cachingImagesHtml() ?>
