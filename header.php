@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
@@ -9,30 +9,16 @@
             openPage(event.state, true);
         });
 
-        var pages = {
-            index: {
-                body: 'Index\r\n' +
-                '<a href="second.php" onclick="openPage(\'second\', false); return false;">second</a>\r\n' +
-                '<img src="img1.jpg" width="100">',
-                title: 'Index'
-            },
-            second: {
-                body: 'Second\r\n' +
-                '<a href="index.php" onclick="openPage(\'index\', false); return false;">index</a>\r\n' +
-                '<img src="img2.jpg" width="100">\r\n' +
-                '<img src="img3.jpg" width="100">',
-                title: 'Second'
-            }
-        };
-
         function openPage(pageName, fromHistory) {
+            var pages = <?= \pages\Page::allPagesHtmlJavaScriptObject() ?>;
+
             if (!fromHistory) {
                 window.history.pushState(pageName, pageName, pageName + '.php');
             }
+
             $('body').html(pages[pageName].body);
+
             document.title = pages[pageName].title;
         }
-
-        // todo: make json object with all pages (php use to write static) by names
     </script>
 </head>

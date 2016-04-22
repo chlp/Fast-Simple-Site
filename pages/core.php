@@ -19,6 +19,23 @@ class Page
     static public $pages = [];
 
     /**
+     * JavaSript-объект с кодом всех страниц
+     * @return string
+     */
+    static public function allPagesHtmlJavaScriptObject()
+    {
+        // todo: нужно еще и запоминать в localstorage, если там что-то не то
+        $pagesObj = [];
+        foreach (Page::$pages as $name => $page) {
+            $pagesObj[$name] = [
+                'title' => $name, // todo: tile нужен специальный указывать, а не name брать
+                'body' => $page->html
+            ];
+        }
+        return json_encode($pagesObj);
+    }
+
+    /**
      * @var string[]
      */
     static public $allImages = [];
