@@ -1,7 +1,4 @@
 <?
-// todo:
-// * добавить перевод
-
 require __DIR__ . '/pages/core.php';
 
 if (isset($_GET['allPagesJavaScriptObject'])) {
